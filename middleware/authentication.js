@@ -1,5 +1,4 @@
 export function checkHeader(request, response, next) {
-	console.log("header", request.headers)
 	if (!request.headers.authorization) {
 		response.status(401).end()
 		return

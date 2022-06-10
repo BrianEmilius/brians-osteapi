@@ -1,8 +1,18 @@
 import Product from "../models/productmodel.js"
+import { collectionView } from "../views/collection.js"
 
 export async function getAllProducts(request, response) {
-	const products = await Product.find()
-	response.json(products)
+	const limit = request.query.limit || 5
+	const offset = request.query.offset || 0
+	const products = await Product.find().skip(offset).limit(limit)
+	const count = await Product.countDocuments()
+	let url = `${request.protocol}://${request.headers.host}${request.originalUrl}`
+
+	if (!url.includes("?")) {
+		url += `?offset=${offset}&limit=${limit}`
+	}
+
+	collectionView({response, products, count, url})
 }
 
 export async function getSingleProduct(request, response) {
