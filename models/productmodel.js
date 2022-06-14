@@ -1,8 +1,19 @@
 import mongoose from "mongoose"
 
-const productSchema = new mongoose.Schema({
+export const priceSchema = new mongoose.Schema({
+	amount: {
+		type: Number,
+		required: [true, "You must provide an amount"]
+	},
+	currency: {
+		type: String,
+		default: "DKK"
+	}
+})
+
+export const productSchema = new mongoose.Schema({
 	name: String,
-	price: Object,
+	price: [priceSchema],
 	description: String
 })
 

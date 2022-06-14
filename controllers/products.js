@@ -46,9 +46,13 @@ export async function createProduct(request, response) {
 	newProduct.price = request.body.price
 	newProduct.description = request.body.description
 
-	const result = await newProduct.save()
-	response.status(201)
-	response.json(result)
+	try {
+		const result = await newProduct.save()
+		response.status(201)
+		response.json(result)
+	} catch (error) {
+		
+	}
 }
 
 export async function deleteProduct(request, response) {
