@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb"
 import mongoose from "mongoose"
 
 export const creditcardSchema = mongoose.Schema({
@@ -37,7 +36,7 @@ const userSchema = mongoose.Schema({
 		type: String,
 		required: [true, "Password required, dumbass!"]
 	},
-	paymentTypes: [{ type: ObjectId, ref: "PaymentType" }]
+	paymentTypes: [{ type: mongoose.Types.ObjectId, ref: "PaymentType" }]
 })
 
 const User = mongoose.model("User", userSchema)
