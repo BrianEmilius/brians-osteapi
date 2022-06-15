@@ -17,7 +17,7 @@ export async function createPaymentType(request, response) {
 		const result = await newPaymentType.save()
 		const id = request.params.id
 
-		await User.findByIdAndUpdate(id, { paymentTypes: [result._id] })
+		await User.findByIdAndUpdate(id, { $push: { paymentTypes: result._id } })
 
 		response.status(201).json(result)
 	} catch (error) {

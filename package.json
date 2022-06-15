@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app",
+    "docs": "cd ./docs && npx insomnia-documenter --config ./Insomnia.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",

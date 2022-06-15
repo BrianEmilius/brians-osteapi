@@ -18,4 +18,7 @@ Router.post("/api/v1/users/:id/payment-methods", createPaymentType)
 Router.post("/auth/token", createToken)
 
 
+// skal være sidst
+Router.use(express.static("docs"))
+
 export default Router

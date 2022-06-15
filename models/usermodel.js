@@ -8,10 +8,10 @@ export const creditcardSchema = mongoose.Schema({
 		type: Number
 	},
 	exp: {
-		type: Number
+		type: String
 	},
 	cvc: {
-		Type: Number
+		Type: String
 	}
 })
 
