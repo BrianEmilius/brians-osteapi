@@ -8,6 +8,7 @@ export async function createUser(request, response) {
 	const newUser = new User()
 	newUser.username = request.body.username
 	newUser.password = password
+	newUser.role = request.body.role
 
 	try {
 		const result = await newUser.save()

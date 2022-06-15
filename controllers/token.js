@@ -20,7 +20,9 @@ export async function createToken(request, response) {
 		const token = jwt.sign({
 			exp: expire,
 			data: {
-				username: result.username
+				id: result._id,
+				username: result.username,
+				role: result.role || "customer"
 			}
 		}, process.env.TOKEN_SECRET)
 		

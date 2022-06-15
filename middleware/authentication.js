@@ -24,3 +24,16 @@ export function checkToken(request, response, next) {
 
 	next()
 }
+
+export function isAdmin(request, response, next) {
+	const token = request.headers.authorization.replace("Bearer ", "")
+
+	const decryptedToken = jwt.verify(token, process.env.TOKEN_SECRET)
+
+	if (decryptedToken.data.role !== "admin") {
+		response.status(403).end()
+		return
+	}
+
+	next()
+}

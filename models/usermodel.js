@@ -36,7 +36,12 @@ const userSchema = mongoose.Schema({
 		type: String,
 		required: [true, "Password required, dumbass!"]
 	},
-	paymentTypes: [{ type: mongoose.Types.ObjectId, ref: "PaymentType" }]
+	paymentTypes: [{ type: mongoose.Types.ObjectId, ref: "PaymentType" }],
+	role: {
+		type: String,
+		required: [true, "You must provide a role"],
+		default: "customer"
+	}
 })
 
 const User = mongoose.model("User", userSchema)
