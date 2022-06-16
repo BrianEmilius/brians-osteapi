@@ -3,7 +3,7 @@ import { createPaymentType } from "./controllers/paymenttypes.js"
 import { getAllProducts, createProduct, getSingleProduct, deleteProduct} from "./controllers/products.js"
 import { createToken } from "./controllers/token.js"
 import { createUser } from "./controllers/users.js"
-import { checkHeader, checkToken, isAdmin } from "./middleware/authentication.js"
+import { checkHeader, checkToken, isAdmin, isCorrectUser } from "./middleware/authentication.js"
 const Router = express.Router()
 
 Router.get("/api/v1/products", getAllProducts)
@@ -13,7 +13,7 @@ Router.delete("/api/v1/products/:query", checkHeader, checkToken, isAdmin, delet
 
 Router.post("/api/v1/users", createUser)
 
-Router.post("/api/v1/users/:id/payment-methods", checkHeader, checkToken, createPaymentType)
+Router.post("/api/v1/users/:id/payment-methods", checkHeader, checkToken, isCorrectUser, createPaymentType)
 
 Router.post("/auth/token", createToken)
 
